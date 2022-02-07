@@ -1,14 +1,27 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView, DetailView, CreateView
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from productapp.models import Product
+
 
 
 
 
 
 # Create your views here.
-def welcome(request):
+#def welcome(request):
 
-    return render(request,'productapp/product_index.html')
+    #return render(request,'productapp/product_index.html')
+
+class ProductList(ListView):
+    model=Product
+    context_object_name='Products'
+    template_name='productapp/product_index.html'
+
+
 
 
 def displayproduct(request):
